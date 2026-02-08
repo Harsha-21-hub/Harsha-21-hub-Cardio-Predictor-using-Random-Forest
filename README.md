@@ -2,7 +2,7 @@
 **Heart Health Early Warning System**  
 
 ## 🚀 Live Demo
-🔗 https://cardio-predictor-using-random-forest.streamlit.app/
+🔗 https://cardiopredictorusingrandomforest.streamlit.app/
 
 
 ## 📌 Mission
@@ -46,4 +46,5 @@ pip install -r requirements.txt
 python train_model.py
 
 streamlit run app.py
+
 
