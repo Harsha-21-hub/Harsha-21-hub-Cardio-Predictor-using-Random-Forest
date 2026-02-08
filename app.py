@@ -12,8 +12,7 @@ st.set_page_config(page_title="Cardio Predictor", layout="wide")
 @st.cache_resource
 def load_model():
     model = joblib.load('heart_model.pkl')
-    imputer = joblib.load('imputer.pkl')
-    return model, imputer
+    return model
 
 try:
     model, imputer = load_model()
@@ -47,16 +46,18 @@ with col1:
     ca = st.number_input("Major Vessels (0-3)", 0, 3, 0)
     thal = st.selectbox("Thalassemia", options=[3, 6, 7], format_func=lambda x: {3: "Normal", 6: "Fixed Defect", 7: "Reversable Defect"}[x])
 
-    feature_columns = [
-    "age", "sex", "cp", "trestbps", "chol", "fbs", "restecg",
-    "thalach", "exang", "oldpeak", "slope", "ca", "thal"]
-
     features_df = pd.DataFrame(
-        [[age, sex, cp, trestbps, chol, fbs, restecg,
-          thalach, exang, oldpeak, slope, ca, thal]],
-        columns=feature_columns)
-    
-    features_processed = imputer.transform(features_df)
+    [[age, sex, cp, trestbps, chol, fbs, restecg,
+      thalach, exang, oldpeak, slope, ca, thal]],
+    columns=[
+        "age", "sex", "cp", "trestbps", "chol", "fbs",
+        "restecg", "thalach", "exang", "oldpeak",
+        "slope", "ca", "thal"
+        ]
+    )
+
+    features_processed = features_df.values
+
 
 with col2:
     st.header("Risk Analysis")
@@ -122,4 +123,5 @@ with col3:
     - 📊 **Visual Dashboard:** Instant interpretation for doctors.
 
     """)
+
 
