@@ -28,8 +28,7 @@ st.markdown("### AI-Powered Early Warning System for Heart Disease")
 col1, col2, col3 = st.columns([1, 2, 1])
 
 with col1:
-    st.header("Patient Data")
-    st.write("Enter details below:")
+    st.header("Patient Vitals")
     
     # Inputs corresponding to the 13 features
     age = st.number_input("Age", 20, 100, 50)
@@ -124,6 +123,7 @@ with col3:
     - 📊 **Visual Dashboard:** Instant interpretation for doctors.
 
     """)
+
 
 
 
